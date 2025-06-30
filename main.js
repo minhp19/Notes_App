@@ -7,6 +7,19 @@ function showNotes() {
 }
 showNotes();
 
+notes = document.querySelectorAll(".input-box");
+notes.forEach(note => {
+    note.onkeyup = function() {
+        updateStorage();
+    };
+
+    if (!note.querySelector("img")) {
+        const img = document.createElement("img");
+        img.src = "images/delete.png";
+        note.appendChild(img);
+    }
+});
+
 function updateStorage() {
     localStorage.setItem("notes", notesContainer.innerHTML);
 }
